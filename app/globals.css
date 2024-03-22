@@ -3,27 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary: #d23669;
+  --text: #222;
+  --title: #000;
+  --desc: rgba(63, 63, 70, 0.8);
+  --bg: #fff;
+  --blur-bg: rgba(255, 255, 255, 0.7);
+  --code-bg: #232936;
+  --link: var(--primary);
+  --inlineCode-bg: rgba(255, 229, 100, 0.2);
+  --inlineCode-text: #1a1a1a;
+  --pink: lab(63 59.32 -1.47);
+  --purple: lab(33 42.09 -43.19);
+  --z-top: 99;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+[data-theme="dark"] {
+  --primary: #ffa7c4;
+  --text: rgba(255, 255, 255, 0.88);
+  --title: white;
+  --desc: rgba(255, 255, 255, 0.8);
+  --bg: #050505;
+  --blur-bg: rgba(255, 255, 255, 0.15);
+  --code-bg: gray;
+  --link: var(--primary);
+  --inlineCode-bg: rgba(115, 124, 153, 0.2);
+  --inlineCode-text: #e6e6e6;
+  --pink: lab(81 32.36 -7.02);
+  --purple: lab(78 19.97 -36.75);
 }
 
 @layer utilities {
