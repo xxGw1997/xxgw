@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={myFont.className}>
-        <ThemeProvider attribute="data-theme" enableSystem>
+        <ThemeProvider attribute="class" enableSystem>
           {children}
         </ThemeProvider>
       </body>

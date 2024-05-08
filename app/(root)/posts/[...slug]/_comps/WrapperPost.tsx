@@ -50,7 +50,7 @@ export const WrapperPost = ({
 
   useInViewport(h_tags, {
     callback,
-    rootMargin: `-${HEADER_HEIGHT}px 0% 0% 0%`,
+    rootMargin: `-${HEADER_HEIGHT - 1}px 0% 0% 0%`,
     threshold: 1,
   });
 

@@ -1,0 +1,23 @@
+/* 渐变字体 */
+.erase-font {
+  --p: 0%;
+  background: linear-gradient(
+    to right,
+    #0000 var(--p),
+    var(--bg) calc(var(--p) + 30px)
+  );
+  color: transparent;
+  animation: erase 10s linear forwards;
+}
+
+@property --p {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: false;
+}
+
+@keyframes erase {
+  to {
+    --p: 100%;
+  }
+}

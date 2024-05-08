@@ -74,3 +74,8 @@ h6:focus .header-anchor {
   display: block;
   padding-right: 1em;
 }
+
+.prose pre code {
+  max-width: 80vw;
+  overflow-x: auto;  
+}

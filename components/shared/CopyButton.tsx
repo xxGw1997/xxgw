@@ -19,7 +19,7 @@ const CopyButton = ({ text }: { text: string | undefined }) => {
   return (
     <button disabled={isCopied} onClick={copy} className="inline-block">
       {isCopied ? (
-        <motion.div>
+        <motion.div animate={{ opacity: isCopied ? 1 : 0 }}>
           <LuCopyCheck color="#32cd1d" size={22} />
         </motion.div>
       ) : (
