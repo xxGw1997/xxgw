@@ -10,6 +10,7 @@ const Experience = () => {
     <Canvas>
       <OrbitControls />
       <YwxModel />
+      <ambientLight intensity={1}/>
     </Canvas>
   );
 };
