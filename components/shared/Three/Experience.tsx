@@ -7,10 +7,17 @@ import { Canvas } from "@react-three/fiber";
 
 const Experience = () => {
   return (
-    <Canvas>
+    <Canvas
+      style={{ width: "600px", height: "600px" }}
+      shadows
+      camera={{ position: [0, 4, 3], fov: 30 }}
+    >
       <OrbitControls />
-      <YwxModel />
-      <ambientLight intensity={1}/>
+      <group position-y={-1}>
+        <YwxModel />
+      </group>
+
+      <ambientLight intensity={1} />
     </Canvas>
   );
 };
