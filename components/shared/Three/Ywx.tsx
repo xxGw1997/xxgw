@@ -53,15 +53,15 @@ export function YwxModel(props) {
   });
 
   useEffect(() => {
-    actions[animation]?.reset().fadeIn(0.5).play();
+    actions[animation]?.reset().fadeIn(1).play();
     return () => {
-      actions[animation]?.reset().fadeOut(0.5);
+      actions[animation]?.reset().fadeOut(1);
     };
   }, [animation]);
 
   return (
     <group {...props} dispose={null} ref={group}>
-      <group rotation-x={-Math.PI / 2}>
+      <group>
         <primitive object={nodes.Hips} />
         <skinnedMesh
           name="EyeLeft"
