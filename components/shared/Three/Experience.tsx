@@ -13,12 +13,16 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useControls } from "leva";
 import { Interface } from "./Interface";
 import ScrollManager from "./ScrollManager";
+import { useTheme } from "next-themes";
 
-const Scene = () => {
+const Scene = ({ theme = "dark" }: { theme?: string }) => {
   return (
     <>
-      <Sky />
-      <Environment preset="warehouse" environmentIntensity={0.9} />
+      {/* <Sky /> */}
+      <Environment
+        preset={theme === "dark" ? "city" : "sunset"}
+        environmentIntensity={0.9}
+      />
       <group position-y={-1}>
         <ContactShadows
           opacity={0.42}
@@ -36,13 +40,15 @@ const Scene = () => {
 
 const Experience = () => {
   const [section, setSection] = useState(0);
+  const { theme } = useTheme();
+  const backgroundColor = theme === "dark" ? "#123456" : "#fedcba";
 
   return (
     <Canvas shadows camera={{ position: [0, 1, 4], fov: 30 }}>
-      <color attach="background" args={["#ececec"]} />
+      <color attach="background" args={[backgroundColor]} />
       <ScrollControls pages={4} damping={0.1}>
         <ScrollManager section={section} onSelectionChange={setSection} />
-        <Scene />
+        <Scene theme={theme} />
         <Scroll html>
           <Interface />
         </Scroll>
