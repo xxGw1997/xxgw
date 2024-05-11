@@ -3,23 +3,20 @@
 import {
   ContactShadows,
   Environment,
-  OrbitControls,
+  Scroll,
+  ScrollControls,
   Sky,
 } from "@react-three/drei";
-import React from "react";
+import React, { useState } from "react";
 import { YwxModel } from "./Ywx";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useControls } from "leva";
+import { Interface } from "./Interface";
+import ScrollManager from "./ScrollManager";
 
-const Experience = () => {
+const Scene = () => {
   return (
-    <Canvas
-      style={{ width: "600px", height: "600px" }}
-      shadows
-      camera={{ position: [0, 1, 4], fov: 30 }}
-    >
-      <color attach="background" args={["#ececec"]} />
-      <OrbitControls />
+    <>
       <Sky />
       <Environment preset="warehouse" environmentIntensity={0.9} />
       <group position-y={-1}>
@@ -33,6 +30,23 @@ const Experience = () => {
         />
         <YwxModel />
       </group>
+    </>
+  );
+};
+
+const Experience = () => {
+  const [section, setSection] = useState(0);
+
+  return (
+    <Canvas shadows camera={{ position: [0, 1, 4], fov: 30 }}>
+      <color attach="background" args={["#ececec"]} />
+      <ScrollControls pages={4} damping={0.1}>
+        <ScrollManager section={section} onSelectionChange={setSection} />
+        <Scene />
+        <Scroll html>
+          <Interface />
+        </Scroll>
+      </ScrollControls>
       {/* <Arena /> */}
     </Canvas>
   );
