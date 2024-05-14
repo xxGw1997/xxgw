@@ -13,6 +13,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useControls } from "leva";
 import { Interface } from "./Interface";
 import ScrollManager from "./ScrollManager";
+import Menu from "./Menu";
 
 const Scene = () => {
   return (
@@ -36,19 +37,27 @@ const Scene = () => {
 
 const Experience = () => {
   const [section, setSection] = useState(0);
+  const [menuOpened, setMenuOpened] = useState(false);
 
   return (
-    <Canvas shadows camera={{ position: [0, 1, 4], fov: 30 }}>
-      <color attach="background" args={["#ececec"]} />
-      <ScrollControls pages={4} damping={0.1}>
-        <ScrollManager section={section} onSelectionChange={setSection} />
-        <Scene />
-        <Scroll html>
-          <Interface />
-        </Scroll>
-      </ScrollControls>
-      {/* <Arena /> */}
-    </Canvas>
+    <>
+      <Canvas shadows camera={{ position: [0, 1, 4], fov: 30 }}>
+        <color attach="background" args={["#ececec"]} />
+        <ScrollControls pages={4} damping={0.1}>
+          <ScrollManager section={section} onSectionChange={setSection} />
+          <Scene />
+          <Scroll html>
+            <Interface />
+          </Scroll>
+        </ScrollControls>
+        {/* <Arena /> */}
+      </Canvas>
+      <Menu
+        menuOpened={menuOpened}
+        setMenuOpened={setMenuOpened}
+        onSectionChange={setSection}
+      />
+    </>
   );
 };
 
