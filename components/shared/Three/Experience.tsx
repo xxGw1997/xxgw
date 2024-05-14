@@ -9,6 +9,7 @@ import {
 } from "@react-three/drei";
 import React, { useState } from "react";
 import { YwxModel } from "./Ywx";
+import { RoomModel } from "./Room";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useControls } from "leva";
 import { Interface } from "./Interface";
@@ -34,6 +35,7 @@ const Scene = ({ theme = "dark" }: { theme?: string }) => {
           color="#000000"
         />
         <YwxModel />
+        <RoomModel />
       </group>
     </>
   );
