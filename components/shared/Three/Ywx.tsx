@@ -53,11 +53,15 @@ export function YwxModel(props) {
   });
 
   useEffect(() => {
-    actions[animation]?.reset().fadeIn(1).play();
+    let curAnimation = animation;
+    if (props.animation) {
+      curAnimation = props.animation;
+    }
+    actions[curAnimation]?.reset().fadeIn(1).play();
     return () => {
-      actions[animation]?.reset().fadeOut(1);
+      actions[curAnimation]?.reset().fadeOut(1);
     };
-  }, [animation]);
+  }, [animation, props.animation]);
 
   return (
     <group {...props} dispose={null} ref={group}>
